@@ -10,13 +10,18 @@ return require('packer').startup(function(use)
 		  requires = { {'nvim-lua/plenary.nvim'} }
 	  }
 
-	  use({ 
-		  'rose-pine/neovim', 
-		  as = 'rose-pine' ,
-		  config = function()
-			  vim.cmd('colorscheme rose-pine')
-		  end
-	  })
+	  -- use({ 
+	  --     'rose-pine/neovim', 
+	  --     as = 'rose-pine' ,
+	  --     config = function()
+	  --   	  vim.cmd('colorscheme rose-pine')
+	  --     end
+	  -- })
+      use('navarasu/onedark.nvim')
+      require('onedark').setup{
+          style = 'warmer'
+      }
+      require('onedark').load()
 
 	  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	  use 'nvim-treesitter/playground'
@@ -43,4 +48,13 @@ return require('packer').startup(function(use)
 
 	  use 'williamboman/mason.nvim'
 	  use 'williamboman/mason-lspconfig.nvim'
+
+      use({
+          "L3MON4D3/LuaSnip",
+          -- follow latest release.
+          tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+          -- install jsregexp (optional!:).
+          run = "make install_jsregexp"
+      })
+      use "rafamadriz/friendly-snippets"
 end)

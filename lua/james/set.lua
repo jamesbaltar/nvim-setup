@@ -1,4 +1,5 @@
 vim.opt.guicursor = ""
+
 vim.opt.wrap = false
 
 vim.opt.smartindent = true
